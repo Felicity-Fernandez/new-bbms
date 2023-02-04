@@ -83,12 +83,12 @@ $userdata = check_login($conn);
 				//}
 				?>
 					<div class="notifbox" id="box">
-						<h2>Notifications </h2>
+						<h2>Notifications  <a href='#' class='las la-times'></a></h2>
 						<div class="notifitem">
 							<div class="text">
 								
 								<?php
-								$sel = "SELECT*FROM borrowing_acts WHERE stud_num='{$_SESSION["stud_num"]}' AND status=0 AND status=0 ORDER BY return_date ASC";
+								$sel = "SELECT*FROM borrowing_acts WHERE stud_num='{$_SESSION["stud_num"]}' AND noti=0 AND status=0 AND status=0 ORDER BY return_date ASC";
 	$res = mysqli_query($conn, $sel);
 	//$row = mysqli_fetch_array($res);
 	if (mysqli_num_rows($res) > 0) {
@@ -110,7 +110,8 @@ $userdata = check_login($conn);
 				//echo "<hr><li style='color: red;'>Past due date <a href='dashboardpage.php?id=".$row['id']."' class='las la-times'></a></li>";
 			//}
                         }elseif ($curdate > $row['return_date']) {
-				echo "<hr><li style='color: red;'>Past due date <a href='dashboardpage.php?id=".$row['id']."' class='las la-times'></a></li>";
+                        	
+						echo "<hr><li style='color: red;'>Past due date</li>";
 			}
 		}
 	}else{
